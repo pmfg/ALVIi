@@ -5,3 +5,16 @@ app/src/main/res/values/google_maps_api.xml
 .gradle/
 gradle
 
+build
+release
+app/build
+app/app.iml
+.gradle/
+.idea/gradle.xml
+.idea/misc.xml
+.idea/runConfigurations.xml
+.idea/workspace.xml
+.idea/
+app.iml
+local.properties
+app.iml
