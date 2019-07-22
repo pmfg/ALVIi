@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:pt.lsts.alvii="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_printscreen"
+        android:title="Capture Screen"/>
+    <item
+        android:id="@+id/action_ripples"
+        android:title="Ripples Map"/>
+    <item
+        android:id="@+id/action_clean_entity_buffer"
+        android:title="Clean Entity Buffer">
+    </item>
+    <item
+        android:id="@+id/action_review_data"
+        android:title="Review data download">
+    </item>
+    <item
+        android:id="@+id/action_manual_download"
+        android:title="Manual download files">
+    </item>
+    <item
+        android:id="@+id/action_show_all_system"
+        android:title="Show all system online">
+        <menu>
+            <item android:id="@+id/vehicles"
+                android:checkable="true"
+                android:checked="false"
+                android:title="Vehicles" />
+            <item android:id="@+id/mantas"
+                android:checkable="true"
+                android:checked="false"
+                android:title="Mantas" />
+            <item android:id="@+id/ccu"
+                android:checkable="true"
+                android:checked="false"
+                android:title="CCU" />
+        </menu>
+    </item>
+    <item
+        android:id="@+id/action_showSystem"
+        android:icon="@drawable/view_on"
+        android:title="ShowSystem"
+        pt.lsts.alvii:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_dont_showSystem"
+        android:icon="@drawable/view_off"
+        android:title="DontShowSystem"
+        pt.lsts.alvii:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_sendsms"
+        android:icon="@drawable/sms"
+        android:title="Send Sms"
+        pt.lsts.alvii:showAsAction="ifRoom" />
+</menu>

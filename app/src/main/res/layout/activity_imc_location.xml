@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:screenOrientation="portrait"
+    tools:layout="@layout/activity_imc_location"
+    tools:context="pt.lsts.alvii.ImcLocation">
+
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:map="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/map_imc"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        map:layout_constraintBottom_toBottomOf="parent"
+        map:layout_constraintHorizontal_bias="0.111"
+        map:layout_constraintLeft_toLeftOf="@+id/sys_list"
+        map:layout_constraintRight_toRightOf="parent"
+        map:layout_constraintTop_toTopOf="parent"
+        map:layout_constraintVertical_bias="0.0"/>
+
+    <ListView
+        android:id="@+id/sys_list"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:background="#50505010"
+        android:fadeScrollbars="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textLiteInfoSystem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="8dp"
+        android:background="#50505010"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageHeartBeat"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginRight="1dp"
+        android:layout_marginTop="1dp"
+        app:layout_constraintRight_toRightOf="@+id/textLiteInfoSystem"
+        app:layout_constraintTop_toTopOf="@+id/textLiteInfoSystem"
+        app:srcCompat="@android:drawable/presence_invisible" />
+
+    <com.zerokol.views.JoystickView
+        android:id="@+id/joystick"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintHorizontal_bias="0.045" />
+
+    <ImageView
+        android:id="@+id/imagedirection"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:srcCompat="@drawable/direction"
+        app:layout_constraintTop_toTopOf="@+id/map_imc"
+        android:layout_marginTop="24dp"
+        android:layout_marginLeft="24dp"
+        app:layout_constraintLeft_toLeftOf="@+id/sys_list" />
+
+    <ImageView
+        android:id="@+id/compass"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/map_imc"
+        app:layout_constraintTop_toTopOf="@+id/map_imc"
+        app:srcCompat="@drawable/compass" />
+
+</android.support.constraint.ConstraintLayout>

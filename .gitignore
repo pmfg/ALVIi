@@ -1,0 +1,7 @@
+build/
+captures/
+app/build/
+app/src/main/res/values/google_maps_api.xml
+.gradle/
+gradle
+

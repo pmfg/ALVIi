@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="pt.lsts.alvii.OfflineMode">
+
+    <TextView
+        android:id="@+id/textStateNetwork"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Wifi Offline"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
+
+    <ImageButton
+        android:id="@+id/imageButtonLog"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginLeft="8dp"
+        android:background="@drawable/ripple_effect"
+        android:contentDescription="Review Log"
+        android:elevation="0dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:srcCompat="@drawable/log"
+        android:layout_marginTop="44dp"
+        app:layout_constraintTop_toBottomOf="@+id/progressBarWifi"
+        android:layout_marginStart="8dp" />
+
+    <ImageButton
+        android:id="@+id/imageButtonDownload"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="44dp"
+        android:background="@drawable/ripple_effect"
+        android:contentDescription="Donwload Log Ftp"
+        android:elevation="0dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progressBarWifi"
+        app:srcCompat="@drawable/download"
+        android:layout_marginEnd="16dp" />
+
+    <ImageButton
+        android:id="@+id/imageButtonWifiState"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="44dp"
+        android:background="@drawable/ripple_effect"
+        android:elevation="0dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButtonLog"
+        app:srcCompat="@drawable/offline_wifi"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
+
+    <ProgressBar
+        android:id="@+id/progressBarWifi"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="32dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:progressDrawable="@android:drawable/progress_horizontal"
+        android:progressTint="@android:color/holo_blue_dark"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textStateNetwork"
+        app:layout_constraintHorizontal_bias="0.0"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp" />
+
+    <TextView
+        android:id="@+id/textViewWifiBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:text="0%"
+        app:layout_constraintBottom_toBottomOf="@+id/progressBarWifi"
+        app:layout_constraintLeft_toLeftOf="@+id/progressBarWifi"
+        app:layout_constraintRight_toRightOf="@+id/progressBarWifi"
+        app:layout_constraintTop_toTopOf="@+id/progressBarWifi"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
+
+</android.support.constraint.ConstraintLayout>
