@@ -220,7 +220,7 @@ public class ImcLocation extends AppCompatActivity implements LocationListener, 
         v = (Vibrator) this.context.getSystemService(Context.VIBRATOR_SERVICE);
         isInitDone = false;
 
-        image = (ImageView) findViewById(R.id.compass);
+        image = findViewById(R.id.compass);
         // initialize your android device sensor capabilities
         mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         // for the system's orientation sensor registered listeners
@@ -228,10 +228,7 @@ public class ImcLocation extends AppCompatActivity implements LocationListener, 
 
 
         PackageManager pm = this.getPackageManager();
-        if (pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY) || pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY_CDMA))
-            deviceHaveSms = true;
-        else
-            deviceHaveSms = false;
+        deviceHaveSms = pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY) || pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY_CDMA);
 
         requestForSpecificPermission();
         if (isWifiAvailable()) {
@@ -247,11 +244,11 @@ public class ImcLocation extends AppCompatActivity implements LocationListener, 
                 }
             }
             init_layout();
-            heartbeate = (ImageView) findViewById(R.id.imageHeartBeat);
+            heartbeate = findViewById(R.id.imageHeartBeat);
             heartbeate.setVisibility(View.INVISIBLE);
-            direction = (ImageView) findViewById(R.id.imagedirection);
+            direction = findViewById(R.id.imagedirection);
             direction.setVisibility(View.INVISIBLE);
-            joystick = (JoystickView) findViewById(R.id.joystick);
+            joystick = findViewById(R.id.joystick);
             joystick.setOnJoystickMoveListener(new JoystickView.OnJoystickMoveListener() {
 
                 @Override
@@ -347,7 +344,7 @@ public class ImcLocation extends AppCompatActivity implements LocationListener, 
         }
     }
 
-    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         for (int i = 0; i < grantResults.length; i++) {
             if (grantResults[i] == -1)
                 result_permission = false;
@@ -469,7 +466,7 @@ public class ImcLocation extends AppCompatActivity implements LocationListener, 
         msg.setOpStr("QUERY");
         //short a = 1;
         //msg.setOpVal(a);
-        acclBus.sendBroadcastMessage(msg);
+        AcclBus.sendBroadcastMessage(msg);
     }
 
     public void requestPlanList() {
@@ -482,7 +479,7 @@ public class ImcLocation extends AppCompatActivity implements LocationListener, 
         for (int i = 0; i < back_number_sys; i++) {
             if (!acclBusListenner.getSysType(sys_name[i]).equals("CCU")) {
                 //Log.i(TAG, "SEND to: "+sys_name[i]);
-                acclBus.sendMessage(msg, sys_name[i]);
+                AcclBus.sendMessage(msg, sys_name[i]);
             }
         }
     }
@@ -679,10 +676,10 @@ public class ImcLocation extends AppCompatActivity implements LocationListener, 
 
     private void sendSpeedMotor(double speed, short idMotor, String sysName) {
         SetThrusterActuation msg = new SetThrusterActuation();
-        msg.setSrc(acclBus.getLocalIdImc());
+        msg.setSrc(AcclBus.getLocalIdImc());
         msg.setId(idMotor);
         msg.setValue(speed / 100.f);
-        acclBus.sendMessage(msg, sysName);
+        AcclBus.sendMessage(msg, sysName);
     }
 
     void showErrorInfo(String text) {
@@ -731,12 +728,12 @@ public class ImcLocation extends AppCompatActivity implements LocationListener, 
             return;
         }
         String imei = mngr.getDeviceId();
-        acclBus.bind("ccu-" + android.os.Build.MODEL, portImc, convertSImeiToID(imei));
+        AcclBus.bind("ccu-" + android.os.Build.MODEL, portImc, convertSImeiToID(imei));
         acclBusListenner = new AcclBusListenner();
         imc_intent = new Intent(this, AcclBusListenner.class);
         acclBusListenner.onStartCommand(imc_intent, 0, 0);
         acclBusListenner.onBind(imc_intent);
-        acclBus.register(acclBusListenner);
+        AcclBus.register(acclBusListenner);
     }
 
     int convertSImeiToID(String text) {
@@ -744,7 +741,7 @@ public class ImcLocation extends AppCompatActivity implements LocationListener, 
             text = Calendar.getInstance().getTime().toString();
 
         int sum = 0;
-        char imei[] = text.toCharArray();
+        char[] imei = text.toCharArray();
         for (int i = 0; i < text.length(); i++)
             sum = sum + imei[i];
         return 0x4000 + sum;
@@ -784,7 +781,7 @@ public class ImcLocation extends AppCompatActivity implements LocationListener, 
             sys_name = Arrays.copyOf(acclBusListenner.getSystem_names(), size);
             sys_ip = Arrays.copyOf(acclBusListenner.getSystem_ip(), size);
 
-            listView_sys = (ListView) findViewById(R.id.sys_list);
+            listView_sys = findViewById(R.id.sys_list);
             adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, sys_name) {
 
                 @Override
@@ -893,7 +890,7 @@ public class ImcLocation extends AppCompatActivity implements LocationListener, 
     }
 
     private void showLiteInfoSystem(String sys_name, int idSys) {
-        TextView info = (TextView) findViewById(R.id.textLiteInfoSystem);
+        TextView info = findViewById(R.id.textLiteInfoSystem);
         if (!acclBusListenner.m_system_Info.system_profile[idSys].getSysType().toString().equals("CCU")) {
             String infoText = "    CPU: " + acclBusListenner.getCpuUsage(sys_name) + " %\n" +
                     "    Disk: " + acclBusListenner.getHddUsage(sys_name) + " %\n" +
@@ -1193,26 +1190,17 @@ public class ImcLocation extends AppCompatActivity implements LocationListener, 
         for (int i = 0; i < back_number_sys; i++) {
             switch (systemToShow){
                 case "vehicles":
-                    if(acclBusListenner.m_system_Info.system_profile[i].getSysType().toString().equals("UUV")
+                    addInfo = acclBusListenner.m_system_Info.system_profile[i].getSysType().toString().equals("UUV")
                             || acclBusListenner.m_system_Info.system_profile[i].getSysType().toString().equals("USV")
-                            || acclBusListenner.m_system_Info.system_profile[i].getSysType().toString().equals("UAV"))
-                        addInfo = true;
-                    else
-                        addInfo = false;
+                            || acclBusListenner.m_system_Info.system_profile[i].getSysType().toString().equals("UAV");
                     break;
 
                 case "mantas":
-                    if(acclBusListenner.m_system_Info.system_profile[i].getSysType().toString().equals("MOBILESENSOR"))
-                        addInfo = true;
-                    else
-                        addInfo = false;
+                    addInfo = acclBusListenner.m_system_Info.system_profile[i].getSysType().toString().equals("MOBILESENSOR");
                     break;
 
                 case "ccu":
-                    if(acclBusListenner.m_system_Info.system_profile[i].getSysType().toString().equals("CCU"))
-                        addInfo = true;
-                    else
-                        addInfo = false;
+                    addInfo = acclBusListenner.m_system_Info.system_profile[i].getSysType().toString().equals("CCU");
                     break;
             }
 
@@ -1423,14 +1411,14 @@ public class ImcLocation extends AppCompatActivity implements LocationListener, 
         IMCMessage msg;
         try {
             msg = IMCDefinition.getInstance().create("RemoteActionsRequest", "op", 1);
-            acclBus.sendMessage(msg, sysName);
+            AcclBus.sendMessage(msg, sysName);
         } catch (Exception e) {
             Log.i(TAG, "2: ", e);
         }
 
         int reqId = 99;
         Teleoperation teleoperationMsg = new Teleoperation();
-        teleoperationMsg.setCustom("src=" + acclBus.getLocalIdImc());
+        teleoperationMsg.setCustom("src=" + AcclBus.getLocalIdImc());
         PlanControl msg_p = new PlanControl();
         msg_p.setType(PlanControl.TYPE.REQUEST);
         msg_p.setOp(PlanControl.OP.START);
@@ -1438,13 +1426,13 @@ public class ImcLocation extends AppCompatActivity implements LocationListener, 
         msg_p.setRequestId(reqId);
         msg_p.setPlanId(TELEOPERATION);
         msg_p.setArg(teleoperationMsg);
-        acclBus.sendMessage(msg_p, sysName);
+        AcclBus.sendMessage(msg_p, sysName);
         acclBusListenner.sendToSpeak(sysName + ", is in teleoperation mode", true);
     }
 
     private void stopTeleOp(String sysName) {
         Log.i(TAG, "STOP: " + sysName);
-        acclBus.sendMessage(new TeleoperationDone(), sysName);
+        AcclBus.sendMessage(new TeleoperationDone(), sysName);
         acclBusListenner.sendToSpeak(sysName + ", is in service mode", true);
     }
 
@@ -1453,7 +1441,7 @@ public class ImcLocation extends AppCompatActivity implements LocationListener, 
         final View layout = inflater.inflate(R.layout.dialog_sms, null);
         systemNumber = layout.findViewById(R.id.dialogNumber);
         systemNumber.setText(lastNumber);
-        final ImageButton buttonContact = (ImageButton) layout.findViewById(R.id.imageButtonContact);
+        final ImageButton buttonContact = layout.findViewById(R.id.imageButtonContact);
         buttonContact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
@@ -1575,7 +1563,7 @@ public class ImcLocation extends AppCompatActivity implements LocationListener, 
         });
         builder1.setView(layout);
 
-        mListView = (ListView) layout.findViewById(R.id.listcontacts);
+        mListView = layout.findViewById(R.id.listcontacts);
         updateBarHandler =new Handler();
         // Since reading contacts takes more time, let's run it on a separate thread.
         new Thread(new Runnable() {
@@ -1589,7 +1577,7 @@ public class ImcLocation extends AppCompatActivity implements LocationListener, 
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String textStr[] = contactList.get(position).split("\\r\\n|\\n|\\r");
+                String[] textStr = contactList.get(position).split("\\r\\n|\\n|\\r");
                 String number = textStr[2].replace("-", "");
                 String number2 = number.replace(" ", "");
                 if(number2.contains("+"))
@@ -1606,7 +1594,7 @@ public class ImcLocation extends AppCompatActivity implements LocationListener, 
 
     public void getContacts() {
         contactList = new ArrayList<String>();
-        String phoneNumber = null;;
+        String phoneNumber = null;
         Uri CONTENT_URI = ContactsContract.Contacts.CONTENT_URI;
         String _ID = ContactsContract.Contacts._ID;
         String DISPLAY_NAME = ContactsContract.Contacts.DISPLAY_NAME;

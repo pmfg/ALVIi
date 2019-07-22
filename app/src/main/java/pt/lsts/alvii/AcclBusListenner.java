@@ -502,10 +502,7 @@ public class AcclBusListenner extends Service {
         for (int i = 0; i < number_system; i++) {
             if (m_system_Info.system_names[i].equals(sysName)) {
                 if(m_system_Info.planInfoRun[i][0].equals(planName)){
-                    if(m_system_Info.planInfoRun[i][1].equals("EXECUTING"))
-                        return true;
-                    else
-                        return false;
+                    return m_system_Info.planInfoRun[i][1].equals("EXECUTING");
                 }
             }
         }

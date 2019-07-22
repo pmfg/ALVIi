@@ -35,7 +35,7 @@ public class ViewWebPage extends AppCompatActivity {
                     | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
         }
 
-        webView = (WebView) findViewById(R.id.webView1);
+        webView = findViewById(R.id.webView1);
         webView.setInitialScale(1);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.setWebViewClient(new WebViewClient());

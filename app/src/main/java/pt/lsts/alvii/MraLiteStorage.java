@@ -30,12 +30,12 @@ class MraLiteStorage {
     private static final String TAG = "MEU MraLiteStorage";
     private LsfIndex m_index;
     private Context m_context;
-    private String messageList[] = new String[1024];
+    private String[] messageList = new String[1024];
     private int numberOfMessage = 0;
     private boolean isFinish;
     private int cntListLog = 0;
     private int cntThread;
-    private String listImcMessagesXMl[] = new String[1024];
+    private String[] listImcMessagesXMl = new String[1024];
     int cntFullIMC;
     int cntStateImcMsg;
 
@@ -52,7 +52,7 @@ class MraLiteStorage {
         cntThread = 0;
     }
 
-    public long getProcessStageValue(){;
+    public long getProcessStageValue(){
         return cntThread ;
     }
 

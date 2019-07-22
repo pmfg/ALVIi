@@ -79,9 +79,9 @@ public class ReviewOldLogs extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setContentView(R.layout.activity_review_old_logs);
-        img = (ImageView) findViewById(R.id.imageViewDownload);
-        exifTex = (TextView) findViewById(R.id.textViewExif);
-        configTex = (TextView) findViewById(R.id.textConfigFile);
+        img = findViewById(R.id.imageViewDownload);
+        exifTex = findViewById(R.id.textViewExif);
+        configTex = findViewById(R.id.textConfigFile);
         configTex.setMovementMethod(new ScrollingMovementMethod());
         viewFiles();
     }

@@ -30,9 +30,9 @@ public class IMCUtils {
 			String service) {
 		String str = msg.getString("services");
 		ArrayList<String> list = new ArrayList<String>();
-		String services[] = str.split(";");
+        String[] services = str.split(";");
 		for (String s : services) {
-			String foo[] = s.split("://");
+            String[] foo = s.split("://");
 			if (foo[0].equals(service))
 				list.add(foo[1]);
 		}
@@ -47,9 +47,9 @@ public class IMCUtils {
 	 * @return The node address for IMC communications.
 	 */
 	public static String[] getAnnounceIMCAddressPort(IMCMessage msg) {
-		String res[]=null;
+        String[] res = null;
 		for (String s : getAnnounceService(msg, "imc+udp")) {
-                String foo[] = s.split(":");
+            String[] foo = s.split(":");
                 res = new String[2];
                 res[0] = foo[0];
                 res[1] = foo[1].substring(0, foo[1].length() - 1);

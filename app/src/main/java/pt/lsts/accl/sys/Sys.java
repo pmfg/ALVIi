@@ -199,9 +199,7 @@ public class Sys {
      * @return true if same system, false otherwise
      */
     public boolean equals(Sys sys){
-        if (sys.getID()==this.getID())
-            return true;
-        return false;
+        return sys.getID() == this.getID();
     }
 
     /**
@@ -209,17 +207,14 @@ public class Sys {
      * @return true if SYS_TYPE = UUV, USV, UAV or UGV, false otherwise
     **/
     public boolean isVehicle(){
-        if (getSysType()==
+        return getSysType() ==
                 SystemType.UUV
-            || getSysType()==
+                || getSysType() ==
                 SystemType.USV
-            || getSysType()==
+                || getSysType() ==
                 SystemType.UAV
-            || getSysType()==
-                SystemType.UGV)
-                return true;
-            else
-                return false;
+                || getSysType() ==
+                SystemType.UGV;
     }
 
     /**
@@ -227,10 +222,7 @@ public class Sys {
      * @return true if SYS_TYPE = UAV, false otherwise
      **/
     public boolean isUAV(){
-        if (getSysType()== SystemType.UAV){
-            return true;
-        }
-        return false;
+        return getSysType() == SystemType.UAV;
     }
 
     /**
@@ -238,10 +230,7 @@ public class Sys {
      * @return true if SYS_TYPE = UUV, false otherwise
      **/
     public boolean isUUV(){
-        if (getSysType()== SystemType.UUV){
-            return true;
-        }
-        return false;
+        return getSysType() == SystemType.UUV;
     }
 
     /**
@@ -250,10 +239,7 @@ public class Sys {
      * @return true if SYS_TYPE = CCU, false otherwise
      **/
     public boolean isCCU(){
-        if (getSysType()== SystemType.CCU){
-            return true;
-        }
-        return false;
+        return getSysType() == SystemType.CCU;
     }
 
     /**
@@ -262,9 +248,7 @@ public class Sys {
      * @return false if more than 10 seconds since last Message, true otherwise.
      */
     public boolean isConnected(){
-        if (getLastMsgReceivedAgeInSeconds()>10)
-            return false;
-        return true;
+        return !(getLastMsgReceivedAgeInSeconds() > 10);
     }
 
 }

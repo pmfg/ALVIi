@@ -47,9 +47,9 @@ public class DisplayGraph extends AppCompatActivity {
     private LsfIndex m_index;
     private File source;
     private String imcMessageName;
-    private String entityLabel[] = new String[1024];
+    private String[] entityLabel = new String[1024];
     GraphView graph;
-    int color[] = new int[10];
+    int[] color = new int[10];
     Button button;
     private Handler updateBarHandler;
     private ProgressDialog pDialog;
@@ -102,7 +102,7 @@ public class DisplayGraph extends AppCompatActivity {
         pDialog.show();
         updateBarHandler =new Handler();
         customHandler.postDelayed(updateTimerThread,0);
-        button = (Button) findViewById(R.id.buttonseries);
+        button = findViewById(R.id.buttonseries);
         showButton = false;
 
         getEntityInfo("EntityInfo");
@@ -110,7 +110,7 @@ public class DisplayGraph extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                graph = (GraphView) findViewById(R.id.graph);
+                graph = findViewById(R.id.graph);
                 graph.getViewport().setXAxisBoundsManual(true);
                 graph.getViewport().setYAxisBoundsManual(true);
                 graph.getViewport().setScalable(true);
@@ -164,7 +164,7 @@ public class DisplayGraph extends AppCompatActivity {
 
     private void plotCpuUsage() {
         graph.setTitle(imcMessageName);
-        double value[] = new double[3200000];
+        double[] value = new double[3200000];
         int cnt = 0;
 
         for (IMCMessage m : m_index.getIterator(imcMessageName)) {
@@ -186,8 +186,8 @@ public class DisplayGraph extends AppCompatActivity {
 
     private void plotEulerAngles() {
         graph.setTitle(imcMessageName);
-        double value[][] = new double[4][3200000];
-        int cnt[] = new int[4];
+        double[][] value = new double[4][3200000];
+        int[] cnt = new int[4];
         for(int i = 0; i < 4; i++)
             cnt[i] = 0;
 
@@ -205,7 +205,7 @@ public class DisplayGraph extends AppCompatActivity {
                 dataPoints0[i][t] = new DataPoint(t, value[i][t]);
         }
 
-        LineGraphSeries<DataPoint> series[] = new LineGraphSeries[4];
+        LineGraphSeries<DataPoint>[] series = new LineGraphSeries[4];
         for(int i = 0; i < 4; i++)
             series[i] = new LineGraphSeries<DataPoint>(dataPoints0[i]);
 
@@ -242,7 +242,7 @@ public class DisplayGraph extends AppCompatActivity {
     }
 
     private void plotSetThrusterActuation() {
-        double value[][] = new double[2][3200000];
+        double[][] value = new double[2][3200000];
         boolean haveTwoMotors = false;
         int cnt0 = 0;
         int cnt1 = 0;
@@ -291,7 +291,7 @@ public class DisplayGraph extends AppCompatActivity {
 
     //###########################################################################################
 
-    private DataPoint[] getDataPoint(int cnt_values, int id, double indexEntity[][]){
+    private DataPoint[] getDataPoint(int cnt_values, int id, double[][] indexEntity){
         DataPoint[] dataPoints = new DataPoint[cnt_values];
         for(int i = 0; i < cnt_values ; i++) {
             dataPoints[i] = new DataPoint(i, indexEntity[id][i]);
@@ -300,7 +300,7 @@ public class DisplayGraph extends AppCompatActivity {
     }
 
     private void getDataOfLogDouble(String imcMessage){
-        final String indexName[] = new String[24];
+        final String[] indexName = new String[24];
         int cnt = 0;
         for (IMCMessage m : m_index.getIterator(imcMessage)) {
             if(cnt == 0){
@@ -318,8 +318,8 @@ public class DisplayGraph extends AppCompatActivity {
             }
         }
 
-        double indexEntity[][] = new double[cnt][3200000];
-        int cntIndex[] = new int[cnt];
+        double[][] indexEntity = new double[cnt][3200000];
+        int[] cntIndex = new int[cnt];
         for(int i = 0; i < cnt; i++)
             cntIndex[i] = 0;
 
@@ -335,7 +335,7 @@ public class DisplayGraph extends AppCompatActivity {
     }
 
     private void getDataOfLogInt(String imcMessage){
-        final String indexName[] = new String[256];
+        final String[] indexName = new String[256];
         int cnt = 0;
         for (IMCMessage m : m_index.getIterator(imcMessage)) {
             if(cnt == 0){
@@ -356,8 +356,8 @@ public class DisplayGraph extends AppCompatActivity {
             }
         }
 
-        double indexEntity[][] = new double[cnt][3200000];
-        int cntIndex[] = new int[cnt];
+        double[][] indexEntity = new double[cnt][3200000];
+        int[] cntIndex = new int[cnt];
         for(int i = 0; i < cnt; i++)
             cntIndex[i] = 0;
 
@@ -372,7 +372,7 @@ public class DisplayGraph extends AppCompatActivity {
         plotData(cntIndex, cnt, indexEntity, indexName);
     }
 
-    private void plotData(int cntIndex[], int cnt, double indexEntity[][], final String indexName[]){
+    private void plotData(int[] cntIndex, int cnt, double[][] indexEntity, final String[] indexName){
         int max_x = 0;
         for(int i = 0; i < cnt; i++) {
             if(cntIndex[i] > max_x)
@@ -401,7 +401,7 @@ public class DisplayGraph extends AppCompatActivity {
             }
         }
 
-        final LineGraphSeries<DataPoint> series[] = new LineGraphSeries[cnt];
+        final LineGraphSeries<DataPoint>[] series = new LineGraphSeries[cnt];
         for(int i = 0; i < cnt; i++) {
             series[i] = new LineGraphSeries<DataPoint>(getDataPoint(cntIndex[i], i, indexEntity));
             series[i].setTitle(indexName[i]);
@@ -416,10 +416,7 @@ public class DisplayGraph extends AppCompatActivity {
         graph.getViewport().setMaxX(max_x+2);
         //graph.getViewport().setXAxisBoundsManual(false);
 
-        if(cnt > 1)
-            showButton = true;
-        else
-            showButton = false;
+        showButton = cnt > 1;
 
         final int finalCnt = cnt;
         final boolean[] Selectedtruefalse = new boolean[finalCnt];

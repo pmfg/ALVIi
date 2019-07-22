@@ -280,10 +280,8 @@ public class AcclBus {
 	 * @see pt.lsts.imc.IMCMessage
 	 */
 	public static boolean isMsgFromMain(IMCMessage imcMessage){
-		if (imcMessage.getSrc()==mainSys.getID())
-			return true;
-		return false;
-	}
+        return imcMessage.getSrc() == mainSys.getID();
+    }
 
 	/**
 	 *

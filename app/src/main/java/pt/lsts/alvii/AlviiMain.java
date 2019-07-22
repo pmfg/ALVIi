@@ -18,6 +18,7 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,14 +45,17 @@ public class AlviiMain extends Activity {
     private boolean startApp;
     private boolean isStop;
     public static Activity mainActivity;
+    private ProgressBar bar;
 
     //Run task periodically
     private Runnable updateTimerThread = new Runnable() {
         public void run() {
             if(!isStop){
                 customHandler.postDelayed(this, 105 - cnt_perc);
-                perc.setText(""+cnt_perc+" %");
-                cnt_perc = cnt_perc + 2;
+                String text = ""+cnt_perc+" %";
+                perc.setText(text);
+                cnt_perc = cnt_perc + 5;
+                bar.setProgress(cnt_perc);
                 if(cnt_perc > 100) {
                     if(!startApp){
                         startApp = true;
@@ -103,6 +107,9 @@ public class AlviiMain extends Activity {
         mImageView_logo_1 = findViewById(R.id.imageLogo_1);
         mImageView_logo_1.setImageResource(R.drawable.logo_1);
         perc = findViewById(R.id.textPerc);
+        bar = findViewById(R.id.progressBar2);
+        bar.setMax(100);
+        bar.setIndeterminate(false);
     }
 
     @Override
@@ -168,7 +175,7 @@ public class AlviiMain extends Activity {
         }
     }
 
-    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         for (int grantResult : grantResults) {
             if (grantResult == -1)
                 result_permission = false;

@@ -20,4 +20,17 @@
         <item name="android:padding">10dp</item>
     </style>
 
+    <style name="IntroStyleWavy"  parent="@android:style/Theme.Black.NoTitleBar.Fullscreen">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="DialogPopUp" parent="Theme.AppCompat.Light.Dialog.MinWidth">
+        <item name="android:windowMinWidthMajor">100%</item>
+        <item name="android:windowMinWidthMinor">100%</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
 </resources>

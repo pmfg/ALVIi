@@ -444,7 +444,7 @@ public class MRALite extends AppCompatActivity {
     private void diplayList() {
         final String[] listMessage = Arrays.copyOf(m_mra_storage.getListOfMessages(), m_mra_storage.getNumberOfListMsg());
         Arrays.sort(listMessage);
-        ListView listView = (ListView) findViewById(R.id.msg_list);
+        ListView listView = findViewById(R.id.msg_list);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, android.R.id.text1, listMessage);
         // Assign adapter to ListView

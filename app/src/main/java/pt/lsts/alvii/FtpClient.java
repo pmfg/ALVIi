@@ -103,16 +103,16 @@ public class FtpClient extends AppCompatActivity {
 
 
 
-        exifData = (TextView) findViewById(R.id.textViewExif);
+        exifData = findViewById(R.id.textViewExif);
         exifData.setMovementMethod(new ScrollingMovementMethod());
         exifData.setVisibility(View.INVISIBLE);
 
         this.setTitle("System: "+b.getString("BUNDLE_SYSTEM_NAME"));
 
-        imageDownload = (ImageView) findViewById(R.id.imageViewDownload);
+        imageDownload = findViewById(R.id.imageViewDownload);
         imageDownload.setVisibility(View.INVISIBLE);
 
-        pbHeaderProgress = (ProgressBar) findViewById(R.id.pbHeaderProgress);
+        pbHeaderProgress = findViewById(R.id.pbHeaderProgress);
         pbHeaderProgress.setVisibility(View.VISIBLE);
 
         isToViewImage = false;
@@ -127,7 +127,7 @@ public class FtpClient extends AppCompatActivity {
     }
 
     public void drawInterface(){
-        listView_sys = (ListView) findViewById(R.id.sys_list_ftp);
+        listView_sys = findViewById(R.id.sys_list_ftp);
         final String[] dir_name = Arrays.copyOf(_name, counterFilesPath);
         Arrays.sort(dir_name);
         pbHeaderProgress.setVisibility(View.GONE);

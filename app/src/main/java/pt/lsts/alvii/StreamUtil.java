@@ -138,7 +138,7 @@ class StreamUtil {
             if (success)
                 Log.i(TAG, "Folder created");
             else {
-                Log.i(TAG, "Error creating folder");;
+                Log.i(TAG, "Error creating folder");
             }
         }
         else {

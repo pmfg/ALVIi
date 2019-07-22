@@ -42,11 +42,11 @@ public class FileArrayAdapter extends ArrayAdapter<Item> {
 
         final Item o = items.get(position);
         if (o != null) {
-            TextView t1 = (TextView) v.findViewById(R.id.TextView01);
-            TextView t2 = (TextView) v.findViewById(R.id.TextView02);
-            TextView t3 = (TextView) v.findViewById(R.id.TextViewDate);
+            TextView t1 = v.findViewById(R.id.TextView01);
+            TextView t2 = v.findViewById(R.id.TextView02);
+            TextView t3 = v.findViewById(R.id.TextViewDate);
                        /* Take the ImageView from layout and set the city's image */
-            ImageView imageCity = (ImageView) v.findViewById(R.id.fd_Icon1);
+            ImageView imageCity = v.findViewById(R.id.fd_Icon1);
             String uri = "drawable/" + o.getImage();
             int imageResource = c.getResources().getIdentifier(uri, null, c.getPackageName());
             Drawable image = c.getResources().getDrawable(imageResource);

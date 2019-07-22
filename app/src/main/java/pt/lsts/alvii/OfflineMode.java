@@ -133,10 +133,10 @@ public class OfflineMode extends AppCompatActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         fa = this;
 
-        textStateNetwork = (TextView) findViewById(R.id.textStateNetwork);
-        barWifi = (ProgressBar) findViewById(R.id.progressBarWifi);
+        textStateNetwork = findViewById(R.id.textStateNetwork);
+        barWifi = findViewById(R.id.progressBarWifi);
         barWifi.setMax(100);
-        textViewWifiBar = (TextView) findViewById(R.id.textViewWifiBar);
+        textViewWifiBar = findViewById(R.id.textViewWifiBar);
         textViewWifiBar.setText("0 %");
 
         addListenerOnButton();
@@ -246,7 +246,7 @@ public class OfflineMode extends AppCompatActivity {
     }
 
     public void addListenerOnButton() {
-        imageButtonLog = (ImageButton) findViewById(R.id.imageButtonLog);
+        imageButtonLog = findViewById(R.id.imageButtonLog);
         imageButtonLog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
@@ -257,7 +257,7 @@ public class OfflineMode extends AppCompatActivity {
             }
         });
 
-        imageButtonFtp = (ImageButton) findViewById(R.id.imageButtonDownload);
+        imageButtonFtp = findViewById(R.id.imageButtonDownload);
         imageButtonFtp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
@@ -272,7 +272,7 @@ public class OfflineMode extends AppCompatActivity {
             }
         });
 
-        imageButtonState = (ImageButton) findViewById(R.id.imageButtonWifiState);
+        imageButtonState = findViewById(R.id.imageButtonWifiState);
         imageButtonState.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
@@ -312,7 +312,7 @@ public class OfflineMode extends AppCompatActivity {
         networkInfo = connManager.getActiveNetworkInfo();
         if (networkInfo.isConnected()) {
             if (networkInfo.getType() == WIFI) {
-                final WifiManager wifiManager = (WifiManager) context.getSystemService(context.WIFI_SERVICE);
+                final WifiManager wifiManager = (WifiManager) context.getSystemService(WIFI_SERVICE);
                 final WifiInfo connectionInfo = wifiManager.getConnectionInfo();
                 if (connectionInfo != null && !TextUtils.isEmpty(connectionInfo.getSSID())) {
                     ssid = connectionInfo.getSSID() + " - IP: " + Formatter.formatIpAddress(connectionInfo.getIpAddress());
@@ -411,7 +411,7 @@ public class OfflineMode extends AppCompatActivity {
         });
         builder1.setView(layout);
 
-        mListView = (ListView) layout.findViewById(R.id.listcontacts);
+        mListView = layout.findViewById(R.id.listcontacts);
         updateBarHandler =new Handler();
         // Since reading contacts takes more time, let's run it on a separate thread.
         new Thread(new Runnable() {
@@ -425,7 +425,7 @@ public class OfflineMode extends AppCompatActivity {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String textStr[] = contactList.get(position).split("\\r\\n|\\n|\\r");
+                String[] textStr = contactList.get(position).split("\\r\\n|\\n|\\r");
                 String number = textStr[2].replace("-", "");
                 String number2 = number.replace(" ", "");
                 if(number2.contains("+"))
@@ -445,7 +445,7 @@ public class OfflineMode extends AppCompatActivity {
         final View layout = inflater.inflate(R.layout.dialog_sms, null);
         systemNumber = layout.findViewById(R.id.dialogNumber);
         systemNumber.setText(lastNumber);
-        final ImageButton buttonContact = (ImageButton) layout.findViewById(R.id.imageButtonContact);
+        final ImageButton buttonContact = layout.findViewById(R.id.imageButtonContact);
         buttonContact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
@@ -550,7 +550,7 @@ public class OfflineMode extends AppCompatActivity {
 
     public void getContacts() {
         contactList = new ArrayList<String>();
-        String phoneNumber = null;;
+        String phoneNumber = null;
         Uri CONTENT_URI = ContactsContract.Contacts.CONTENT_URI;
         String _ID = ContactsContract.Contacts._ID;
         String DISPLAY_NAME = ContactsContract.Contacts.DISPLAY_NAME;
