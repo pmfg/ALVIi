@@ -8,7 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
@@ -32,9 +32,6 @@ import java.util.Arrays;
 import java.util.zip.GZIPInputStream;
 
 import pt.lsts.imc.IMCDefinition;
-import pt.lsts.imc.IMCMessage;
-import pt.lsts.imc.IMCMessageType;
-import pt.lsts.imc.lsf.LsfGenericIterator;
 import pt.lsts.imc.lsf.LsfIndex;
 
 public class MRALite extends AppCompatActivity {
