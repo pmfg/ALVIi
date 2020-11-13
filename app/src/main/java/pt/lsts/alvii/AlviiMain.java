@@ -90,7 +90,7 @@ public class AlviiMain extends Activity {
         startApp = false;
         isStop = false;
 
-        if(Build.VERSION.SDK_INT <= 22){
+        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.M){
             checkConnections();
             //customHandler = new android.os.Handler();
             //customHandler.postDelayed(updateTimerThread,0);
