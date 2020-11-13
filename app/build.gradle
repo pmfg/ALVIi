@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 29
     defaultConfig {
         applicationId "pt.lsts.alvii"
-        minSdkVersion 21
-        targetSdkVersion 30
-        versionCode 1
-        versionName '1.8'
+        minSdkVersion 22
+        targetSdkVersion 29
+        versionCode 19
+        versionName '1.9'
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
     buildTypes {
@@ -16,6 +16,11 @@ android {
     }
     productFlavors {
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildToolsVersion '29.0.2'
 }
 
 dependencies {

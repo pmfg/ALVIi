@@ -6,7 +6,7 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="info" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="AvailableLibraryUpdateStorage">
@@ -53,25 +53,18 @@
   <component name="ChangeListManager">
     <list default="true" id="24b88bcb-a562-4be3-8a77-f7864a8ad7b7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_jjoe64_graphview_4_2_2_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_jjoe64_graphview_4_2_2_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_core_1_3_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/alvii.iml" beforeDir="false" afterPath="$PROJECT_DIR$/alvii.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/pt/lsts/alvii/AlviiMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/pt/lsts/alvii/AlviiMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/pt/lsts/alvii/ImcLocation.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/pt/lsts/alvii/ImcLocation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[CB5A20LRPM]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[16e584d50205]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -198,25 +191,29 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1878" height="235" key="GridCell.Tab.0.bottom" timestamp="1605279296246">
+    <state x="480" y="254" width="950" height="524" key="#PSD" timestamp="1605292393407">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1878" height="235" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1605279296246" />
-    <state width="1878" height="235" key="GridCell.Tab.0.center" timestamp="1605279296246">
+    <state x="480" y="254" width="950" height="524" key="#PSD/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1605292393407" />
+    <state width="1876" height="235" key="GridCell.Tab.0.bottom" timestamp="1605293354349">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1878" height="235" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1605279296246" />
-    <state width="1878" height="235" key="GridCell.Tab.0.left" timestamp="1605279296246">
+    <state width="1876" height="235" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1605293354349" />
+    <state width="1876" height="235" key="GridCell.Tab.0.center" timestamp="1605293354349">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1878" height="235" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1605279296246" />
-    <state width="1878" height="235" key="GridCell.Tab.0.right" timestamp="1605279296246">
+    <state width="1876" height="235" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1605293354349" />
+    <state width="1876" height="235" key="GridCell.Tab.0.left" timestamp="1605293354349">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1878" height="235" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1605279296246" />
-    <state x="464" y="154" key="SettingsEditor" timestamp="1605279288226">
+    <state width="1876" height="235" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1605293354349" />
+    <state width="1876" height="235" key="GridCell.Tab.0.right" timestamp="1605293354349">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="464" y="154" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1605279288226" />
+    <state width="1876" height="235" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1605293354349" />
+    <state x="464" y="154" key="SettingsEditor" timestamp="1605292310338">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="464" y="154" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1605292310338" />
   </component>
 </project>

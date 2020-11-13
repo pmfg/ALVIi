@@ -82,6 +82,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Random;
 
 import pt.lsts.accl.bus.AcclBus;
 import pt.lsts.accl.util.pos.Position;
@@ -725,7 +726,10 @@ public class ImcLocation extends AppCompatActivity implements LocationListener, 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
-        String imei = mngr.getDeviceId();
+        int min = 1000;
+        int max = 5000;
+        int random = new Random().nextInt((max - min) + 1) + min;
+        String imei = ""+random;
         AcclBus.bind("ccu-" + android.os.Build.MODEL, portImc, convertSImeiToID(imei));
         acclBusListenner = new AcclBusListenner();
         imc_intent = new Intent(this, AcclBusListenner.class);

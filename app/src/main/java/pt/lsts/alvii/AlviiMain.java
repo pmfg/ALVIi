@@ -35,7 +35,7 @@ public class AlviiMain extends Activity {
     private Handler customHandler;
     boolean firstBack = true;
     boolean isInitDone;
-    private File storageDir = new File(Environment.getExternalStorageDirectory().getPath() + File.separator + "alvii");
+    private File storageDir = new File(Environment.getExternalStorageDirectory().getPath() + File.separator + "ALVIi");
     ImageView mImageView_logo;
     ImageView mImageView_logo_0;
     ImageView mImageView_logo_1;
@@ -59,7 +59,8 @@ public class AlviiMain extends Activity {
                     if(!startApp){
                         startApp = true;
                         isStop = true;
-                        startApp();
+                        if(isInitDone)
+                            startApp();
                     }
                 }
             }
@@ -155,7 +156,7 @@ public class AlviiMain extends Activity {
                 Manifest.permission.ACCESS_WIFI_STATE,
                 Manifest.permission.SEND_SMS,
                 Manifest.permission.READ_CONTACTS,
-                //Manifest.permission.CAMERA,
+                //Manifest.permission.READ_PRIVILEGED_PHONE_STATE,
                 Manifest.permission.VIBRATE,
                 Manifest.permission.ACCESS_FINE_LOCATION,
                 Manifest.permission.ACCESS_COARSE_LOCATION,
@@ -188,18 +189,29 @@ public class AlviiMain extends Activity {
 
     private void checkConnections(){
         if (isWifiAvailable() && isNetworkAvailable()) {
-            boolean success;
+            boolean success = false;
             if (!storageDir.exists()) {
                 Log.i(TAG, "Creating foler");
-                success = storageDir.mkdirs();
-                if (success)
+                //boolean success = false;
+                try {
+                    success = storageDir.mkdirs();
+                }catch (Exception io) {
+                    Log.i(TAG, io.getMessage());
+                }
+                if (success) {
                     Log.i(TAG, "Folder created");
+                    isInitDone = true;
+                }
                 else {
                     Log.i(TAG, "Error creating folder");
                     showErrorInfo("Error creating folder");
+                    isInitDone = false;
                 }
             }
-            isInitDone = true;
+            else{
+                isInitDone = true;
+            }
+
             customHandler = new android.os.Handler();
             customHandler.postDelayed(updateTimerThread, 0);
         }
